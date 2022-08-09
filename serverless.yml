@@ -47,12 +47,12 @@ provider:
 
 functions:
   preSignUp:
-      handler: lambda-triggers/auth-functions/pre-sign-up.main
-      events:
+    handler: lambda-triggers/auth-functions/pre-sign-up.main
+    events:
         - cognitoUserPool:
             pool: ${self:custom.stage}-user-pool
             trigger: PreSignUp
-
+            existing: true
   create:
     # Defines an HTTP API endpoint that calls the main function in create.js
     handler: lambda-triggers/db-functions/create.main

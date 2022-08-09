@@ -4,23 +4,10 @@ Resources:
     Properties:
       # Generate a name based on the stage
       UserPoolName: ${self:custom.stage}-user-pool
-      Schema:
-        - Name: name
-          AttributeDataType: String
-          Mutable: true
-          Required: true
-        - Name: email
-          AttributeDataType: String
-          Mutable: true
-          Required: true
-      Policies:
-        PasswordPolicy:
-          MinimumLength: 8
-          RequireLowercase: false
-          RequireNumbers: false
-          RequireSymbols: false
-          RequireUppercase: false
+      # Set email as an alias
       UsernameAttributes:
+        - email
+      AutoVerifiedAttributes:
         - email
       MfaConfiguration: "OFF"
 
@@ -32,7 +19,7 @@ Resources:
       UserPoolId:
         Ref: CognitoUserPool
       ExplicitAuthFlows:
-        - ADMIN_NO_SRP_AUTH
+        - CUSTOM_AUTH_FLOW_ONLY
       GenerateSecret: false
 
 # Print out the Id of the User Pool that is created
