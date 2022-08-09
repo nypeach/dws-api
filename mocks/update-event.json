@@ -1,0 +1,11 @@
+{
+ "body": "{\"dwTitle\":\"Some Blarg Title\",\"dwDescription\":\"Some Blarg Description\",\"cloudApps\":2,\"onPremApps\":1,\"recordsPerMonth\":5000,\"hoursPerMonth\":800,\"whoDoesItNow\":\"Paralegal\",\"hourlyRate\":40.5,\"attachment\":\"blarg.jpg\"}",
+  "pathParameters": {
+    "id": "90ae4af0-17e3-11ed-882a-1f9f95a53855"
+  },
+  "requestContext": {
+    "identity": {
+      "cognitoIdentityId": "USER-SUB-1234"
+    }
+  }
+}
