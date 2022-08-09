@@ -46,6 +46,13 @@ provider:
         - "Fn::GetAtt": [ DwsTable, Arn ]
 
 functions:
+  preSignUp:
+      handler: lambda-triggers/auth-functions/pre-sign-up.main
+      events:
+        - cognitoUserPool:
+            pool: ${self:custom.stage}-user-pool
+            trigger: PreSignUp
+
   create:
     # Defines an HTTP API endpoint that calls the main function in create.js
     handler: lambda-triggers/db-functions/create.main
