@@ -53,6 +53,34 @@ functions:
             pool: ${self:custom.stage}-user-pool
             trigger: PreSignUp
             existing: true
+  createAuthChallenge:
+    handler: lambda-triggers/auth-functions/create-auth-challenge.main
+    events:
+        - cognitoUserPool:
+            pool: ${self:custom.stage}-user-pool
+            trigger: CreateAuthChallenge
+            existing: true
+  defineAuthChallenge:
+    handler: lambda-triggers/auth-functions/define-auth-challenge.main
+    events:
+        - cognitoUserPool:
+            pool: ${self:custom.stage}-user-pool
+            trigger: DefineAuthChallenge
+            existing: true
+  verifyAuthChallengeResponse:
+    handler: lambda-triggers/auth-functions/verify-auth-challenge-response.main
+    events:
+        - cognitoUserPool:
+            pool: ${self:custom.stage}-user-pool
+            trigger: VerifyAuthChallengeResponse
+            existing: true
+  postAuthentication:
+    handler: lambda-triggers/auth-functions/post-authentication.main
+    events:
+        - cognitoUserPool:
+            pool: ${self:custom.stage}-user-pool
+            trigger: PostAuthentication
+            existing: true
   create:
     # Defines an HTTP API endpoint that calls the main function in create.js
     handler: lambda-triggers/db-functions/create.main
